@@ -1,4 +1,4 @@
 FROM mysql:5.6
 
-ADD banco_de_datos.sql /docker-entrypoint-initdb.d
+ADD banco_de_dados.sql /docker-entrypoint-initdb.d
 
