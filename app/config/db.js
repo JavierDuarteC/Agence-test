@@ -5,8 +5,10 @@ const basename = path.basename(__filename);
 const config = require(__dirname + '/config');
 let db = {};
 
+// Start new connection
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
 
+//Get every model in models folder and inport as Sequelize model
 fs
   .readdirSync(__dirname + '/../models')
   .filter(file => {
@@ -25,5 +27,5 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
+// db has each model from models folder, sequelize connection and Sequelize import
 module.exports = db;
