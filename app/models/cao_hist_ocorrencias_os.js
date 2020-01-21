@@ -5,7 +5,7 @@ const {
 module.exports = sequelize => {
   const attributes = {
     idocorrencia: {
-      type: DataTypes.INTEGER(11),
+      type: DataTypes.INTEGER(11).UNSIGNED,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
@@ -14,13 +14,17 @@ module.exports = sequelize => {
       field: "idocorrencia"
     },
     co_os: {
-      type: DataTypes.INTEGER(8),
+      type: DataTypes.INTEGER(8).UNSIGNED,
       allowNull: true,
       defaultValue: null,
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "co_os"
+      field: "co_os",
+      references: {
+        key: "co_os",
+        model: "cao_os_model"
+      }
     },
     co_usuario: {
       type: DataTypes.STRING(20),
@@ -29,7 +33,11 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "co_usuario"
+      field: "co_usuario",
+      references: {
+        key: "co_usuario",
+        model: "cao_usuario_model"
+      }
     },
     data: {
       type: DataTypes.DATE,

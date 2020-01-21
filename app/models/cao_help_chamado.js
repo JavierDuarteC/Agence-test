@@ -5,7 +5,7 @@ const {
 module.exports = sequelize => {
   const attributes = {
     co_chamado: {
-      type: DataTypes.INTEGER(11),
+      type: DataTypes.INTEGER(11).UNSIGNED,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,

@@ -5,7 +5,7 @@ const {
 module.exports = sequelize => {
   const attributes = {
     co_diary_report: {
-      type: DataTypes.INTEGER(10),
+      type: DataTypes.INTEGER(10).UNSIGNED,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,

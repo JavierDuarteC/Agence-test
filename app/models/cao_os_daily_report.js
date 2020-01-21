@@ -5,7 +5,7 @@ const {
 module.exports = sequelize => {
   const attributes = {
     co_daily: {
-      type: DataTypes.INTEGER(8),
+      type: DataTypes.INTEGER(8).UNSIGNED,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,

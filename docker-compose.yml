@@ -4,6 +4,9 @@ services:
     build: ./app
     env_file:
       - ./.env
+    volumes:
+      - ./app:/usr/src/app
+      - /usr/src/app/node_modules
     ports:
       - "${WEB_PORT}:${WEB_PORT}"
     depends_on:
@@ -14,3 +17,5 @@ services:
       - "3306:3306"
     env_file:
       - ./.env
+volumes:
+  data-volume:

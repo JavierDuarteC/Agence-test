@@ -11,7 +11,11 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "co_usuario"
+      field: "co_usuario",
+      references: {
+        key: "co_usuario",
+        model: "cao_usuario_model"
+      }
     },
     permissao_intervalo: {
       type: DataTypes.ENUM('0', '1'),

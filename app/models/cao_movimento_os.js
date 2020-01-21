@@ -5,7 +5,7 @@ const {
 module.exports = sequelize => {
   const attributes = {
     co_movimento_os: {
-      type: DataTypes.INTEGER(5),
+      type: DataTypes.INTEGER(5).UNSIGNED,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,

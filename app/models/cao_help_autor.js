@@ -5,7 +5,7 @@ const {
 module.exports = sequelize => {
   const attributes = {
     co_autor: {
-      type: DataTypes.INTEGER(6),
+      type: DataTypes.INTEGER(6).UNSIGNED,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,

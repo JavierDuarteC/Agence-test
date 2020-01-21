@@ -5,7 +5,7 @@ const {
 module.exports = sequelize => {
   const attributes = {
     co_tela: {
-      type: DataTypes.INTEGER(2),
+      type: DataTypes.INTEGER(2).UNSIGNED,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,

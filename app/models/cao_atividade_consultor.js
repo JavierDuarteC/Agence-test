@@ -5,7 +5,7 @@ const {
 module.exports = sequelize => {
   const attributes = {
     co_atividade: {
-      type: DataTypes.INTEGER(20),
+      type: DataTypes.INTEGER(20).UNSIGNED,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,

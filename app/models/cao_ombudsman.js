@@ -5,7 +5,7 @@ const {
 module.exports = sequelize => {
   const attributes = {
     id: {
-      type: DataTypes.INTEGER(11),
+      type: DataTypes.INTEGER(11).UNSIGNED,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
@@ -14,22 +14,30 @@ module.exports = sequelize => {
       field: "id"
     },
     idtipo: {
-      type: DataTypes.INTEGER(4),
+      type: DataTypes.INTEGER(4).UNSIGNED,
       allowNull: false,
       defaultValue: "0",
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "idtipo"
+      field: "idtipo",
+      references: {
+        key: "idtipo",
+        model: "cao_tipo_ombudsman_model"
+      }
     },
     idcategoria: {
-      type: DataTypes.INTEGER(4),
+      type: DataTypes.INTEGER(4).UNSIGNED,
       allowNull: false,
       defaultValue: "0",
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "idcategoria"
+      field: "idcategoria",
+      references: {
+        key: "idcategoria",
+        model: "cao_categorias_ombudsman_model"
+      }
     },
     data: {
       type: DataTypes.DATE,
@@ -50,7 +58,7 @@ module.exports = sequelize => {
       field: "comentario"
     },
     co_escritorio: {
-      type: DataTypes.INTEGER(4),
+      type: DataTypes.INTEGER(4).UNSIGNED,
       allowNull: false,
       defaultValue: "0",
       primaryKey: false,

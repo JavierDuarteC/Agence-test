@@ -1,10 +1,29 @@
-const { Sequelize } = require('sequelize');
-const config    = require(__dirname + '/config');
+const fs = require('fs');
+const path = require('path');
+const Sequelize = require('sequelize');
+const basename = path.basename(__filename);
+const config = require(__dirname + '/config');
+let db = {};
 
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
 
-let db = {};
+fs
+  .readdirSync(__dirname + '/../models')
+  .filter(file => {
+    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+  })
+  .forEach(file => {
+    var model = sequelize.import(path.join(__dirname, '/../models/'+file));
+    db[model.name] = model;
+  });
 
-db.cliente = sequelize.import(__dirname + "/../models/cao_cliente");
+Object.keys(db).forEach(modelName => {
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
+  }
+});
+
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
 
 module.exports = db;

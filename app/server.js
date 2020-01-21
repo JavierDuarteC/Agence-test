@@ -9,12 +9,11 @@ app.use(cors())
 app.use(express.json())
 
 //Add routers and use them
-const logsRouter = require('./routes/logs')
-const usersRouter = require('./routes/users')
-const authRouter = require('./routes/auth')
-app.use('/logs',logsRouter)
-app.use('/users', usersRouter)
-app.use('/account', authRouter)
+const clientesRouter = require('./routes/clientes')
+app.use('/clientes', clientesRouter)
+
+const usuariosRouter = require('./routes/usuarios')
+app.use('/usuarios', usuariosRouter)
 
 //Start listening
 app.listen(port,()=>{

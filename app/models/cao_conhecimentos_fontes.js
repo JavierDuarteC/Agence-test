@@ -5,7 +5,7 @@ const {
 module.exports = sequelize => {
   const attributes = {
     idfonte: {
-      type: DataTypes.INTEGER(11),
+      type: DataTypes.INTEGER(11).UNSIGNED,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
@@ -14,13 +14,17 @@ module.exports = sequelize => {
       field: "idfonte"
     },
     idconhecimento: {
-      type: DataTypes.INTEGER(11),
+      type: DataTypes.INTEGER(11).UNSIGNED,
       allowNull: false,
       defaultValue: "0",
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "idconhecimento"
+      field: "idconhecimento",
+      references: {
+        key: "idconhecimento",
+        model: "cao_conhecimentos_model"
+      }
     },
     datahora: {
       type: DataTypes.DATE,

@@ -5,7 +5,7 @@ const {
 module.exports = sequelize => {
   const attributes = {
     idpontos: {
-      type: DataTypes.INTEGER(11),
+      type: DataTypes.INTEGER(11).UNSIGNED,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
@@ -14,13 +14,17 @@ module.exports = sequelize => {
       field: "idpontos"
     },
     pontuacao: {
-      type: DataTypes.INTEGER(4),
+      type: DataTypes.INTEGER(4).UNSIGNED,
       allowNull: false,
       defaultValue: "0",
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "pontuacao"
+      field: "pontuacao",
+      references: {
+        key: "idescala",
+        model: "cao_escala_ranking_model"
+      }
     },
     co_coordenador: {
       type: DataTypes.STRING(50),
@@ -29,16 +33,24 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "co_coordenador"
+      field: "co_coordenador",
+      references: {
+        key: "co_usuario",
+        model: "cao_usuario_model"
+      }
     },
     idconhecimento: {
-      type: DataTypes.INTEGER(11),
+      type: DataTypes.INTEGER(11).UNSIGNED,
       allowNull: false,
       defaultValue: "0",
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "idconhecimento"
+      field: "idconhecimento",
+      references: {
+        key: "idconhecimento",
+        model: "cao_conhecimentos_model"
+      }
     }
   };
   const options = {

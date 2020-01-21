@@ -5,7 +5,7 @@ const {
 module.exports = sequelize => {
   const attributes = {
     co_motivo: {
-      type: DataTypes.INTEGER(3),
+      type: DataTypes.INTEGER(3).UNSIGNED,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,

@@ -5,7 +5,7 @@ const {
 module.exports = sequelize => {
   const attributes = {
     idescala: {
-      type: DataTypes.INTEGER(4),
+      type: DataTypes.INTEGER(4).UNSIGNED,
       allowNull: false,
       defaultValue: null,
       primaryKey: true,
