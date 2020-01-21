@@ -6,14 +6,14 @@ permissao_sistema_model.hasOne(cao_usuario_model, {foreignKey: 'co_usuario'})
 cao_usuario_model.belongsTo(permissao_sistema_model, {foreignKey: 'co_usuario'})
 //Use model to select * and send as json
 router.route('/').get((req,res)=>{
-    permissao_sistema_model.findAll({
-        where: {
-            co_sistema: 1,
-            in_ativo: 'S',
-            co_tipo_usuario: [0,1,2]
-        },
+    cao_usuario_model.findAll({
         include: [{
-            model: cao_usuario_model
+            model: permissao_sistema_model,
+            where: {
+                co_sistema: 1,
+                in_ativo: 'S',
+                co_tipo_usuario: [0,1,2]
+            }
         }]
     })
         .then(usuarios=>res.json(usuarios))
