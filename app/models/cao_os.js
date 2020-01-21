@@ -38,7 +38,11 @@ module.exports = sequelize => {
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "co_usuario"
+      field: "co_usuario",
+      references: {
+        key: "co_usuario",
+        model: "cao_usuario_model"
+      }
     },
     co_arquitetura: {
       type: DataTypes.INTEGER(2),
@@ -206,7 +210,12 @@ module.exports = sequelize => {
   const options = {
     tableName: "cao_os",
     comment: "",
-    indexes: []
+    indexes: [{
+      name: "co_usuario",
+      unique: false,
+      type: "BTREE",
+      fields: ["co_usuario"]
+    }]
   };
   const CaoOsModel = sequelize.define("cao_os_model", attributes, options);
   return CaoOsModel;

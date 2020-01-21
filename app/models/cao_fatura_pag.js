@@ -14,14 +14,18 @@ module.exports = sequelize => {
       field: "id_fatura_pag"
     },
     co_fatura: {
-      type: DataTypes.INTEGER(11),
+      type: DataTypes.INTEGER(11).UNSIGNED,
       allowNull: false,
       defaultValue: "0",
       primaryKey: false,
       autoIncrement: false,
       comment: null,
       field: "co_fatura",
-      unique: "co_fatura"
+      unique: "co_fatura",
+      references: {
+        key: "co_fatura",
+        model: "cao_fatura_model"
+      }
     },
     dt_efetuado: {
       type: DataTypes.DATEONLY,

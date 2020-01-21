@@ -32,13 +32,17 @@ module.exports = sequelize => {
       field: "co_sistema"
     },
     co_os: {
-      type: DataTypes.INTEGER(8),
+      type: DataTypes.INTEGER(8).UNSIGNED,
       allowNull: false,
       defaultValue: "0",
       primaryKey: false,
       autoIncrement: false,
       comment: null,
-      field: "co_os"
+      field: "co_os",
+      references: {
+        key: "co_os",
+        model: "cao_os_model"
+      }
     },
     num_nf: {
       type: DataTypes.INTEGER(10),
@@ -107,7 +111,12 @@ module.exports = sequelize => {
   const options = {
     tableName: "cao_fatura",
     comment: "",
-    indexes: []
+    indexes: [{
+      name: "co_os",
+      unique: false,
+      type: "BTREE",
+      fields: ["co_os"]
+    }]
   };
   const CaoFaturaModel = sequelize.define("cao_fatura_model", attributes, options);
   return CaoFaturaModel;
